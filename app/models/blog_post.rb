@@ -4,6 +4,8 @@ class BlogPost < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   belongs_to :picture
+  belongs_to :city
+
   mount_uploader :mp3file, Mp3Uploader
 
   acts_as_taggable

@@ -7,6 +7,7 @@ class SingleEvent < ActiveRecord::Base
   belongs_to :venue
   belongs_to :event
   belongs_to :picture
+  belongs_to :city
 
   delegate :title, :description, to: :event, prefix: true
 

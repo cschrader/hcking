@@ -1,0 +1,16 @@
+.panel
+  %h3 City
+
+  .attributes_table
+    %table{cellspacing:0, cellpadding: 0}
+      %tbody
+        %tr
+          %th Name
+          %td= @city.name
+        %tr
+          %th Latitude
+          %td= @city.latitude
+        %tr
+          %th Longitude
+          %td= @city.longitude
+
