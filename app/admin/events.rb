@@ -5,6 +5,9 @@ ActiveAdmin.register Event do
     column :id
     column :name
     column :category
+    column :city do |event|
+      event.city.try(:name)
+    end
     column :url do |event|
       a "Link", href: event.url
     end
@@ -25,6 +28,7 @@ ActiveAdmin.register Event do
   show do
     render partial: 'show'
   end
+
   form do
     render partial: 'form'
   end

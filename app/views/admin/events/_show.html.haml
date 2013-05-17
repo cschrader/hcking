@@ -19,6 +19,9 @@
           %th Kategory
           %td= @event.category.try(:title)
         %tr
+          %th City
+          %td= @event.city.try(:name)
+        %tr
           %th URL
           %td= link_to @event.url, @event.url
         %tr
