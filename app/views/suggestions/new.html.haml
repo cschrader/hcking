@@ -10,6 +10,8 @@
   = f.input :occurrence, hint: t("suggestions.new.occurrence_hint")
   = f.input :description, hint: t("suggestions.new.description_hint")
   = f.input :place
+  .label :City
+  = f.select :city, options_for_select(City.all.map{|c| [c.name,c.id]})
   = f.input :more_as_text, as: :text, hint: t("suggestions.new.more_hint")
 
   .form-actions

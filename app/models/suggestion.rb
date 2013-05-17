@@ -3,14 +3,16 @@ class Suggestion < ActiveRecord::Base
     :occurrence,
     :description,
     :more,
-    :place,
+    :city,
     :more_as_text
 
   serialize :more, Hash
 
+  belongs_to :city
+
   validates_presence_of :name,
     :occurrence,
-    :place
+    :city
 
   def more_as_text spacer = "\n"
     more.map {|key, value| "#{key}: #{value}"}.join spacer

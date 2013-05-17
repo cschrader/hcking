@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517103743) do
+ActiveRecord::Schema.define(:version => 20130517153438) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20130517103743) do
     t.integer  "picture_id"
     t.string   "mp3file"
     t.string   "blog_type",         :default => "blog"
+    t.integer  "city_id"
   end
 
   add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130517103743) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "carousel_position"
+    t.integer  "city_id"
   end
 
   add_index "boxes", ["content_id", "content_type"], :name => "index_boxes_on_content_id_and_content_type"
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20130517103743) do
     t.integer  "venue_id"
     t.string   "venue_info"
     t.integer  "picture_id"
+    t.integer  "city_id"
   end
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
@@ -186,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20130517103743) do
     t.integer  "picture_id"
     t.string   "twitter"
     t.boolean  "use_venue_info_of_event", :default => true
+    t.integer  "city_id"
   end
 
   add_index "single_events", ["category_id"], :name => "index_single_events_on_category_id"
@@ -209,6 +213,7 @@ ActiveRecord::Schema.define(:version => 20130517103743) do
     t.text     "more"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "city_id"
   end
 
   create_table "taggings", :force => true do |t|
