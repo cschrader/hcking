@@ -7,6 +7,8 @@ ActiveAdmin.register City do
     column :name
     column :longitude
     column :latitude
+
+    default_actions
   end
 
   show do
