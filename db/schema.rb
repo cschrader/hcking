@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517103743) do
+ActiveRecord::Schema.define(:version => 20130517121211) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130517103743) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "carousel_position"
+    t.integer  "city_id"
   end
 
   add_index "boxes", ["content_id", "content_type"], :name => "index_boxes_on_content_id_and_content_type"
