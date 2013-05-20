@@ -1,6 +1,6 @@
 Hcking::Application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "callbacks" } 
-  
+  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+
   devise_scope :users do
     get 'users', :to => 'users#show', :as => :user_root # Rails 3
   end
@@ -82,6 +82,7 @@ Hcking::Application.routes.draw do
   match "impressum"               => "pages#show", page_name: "impressum"
   match "newsletter"              => "pages#show", page_name: "newsletter"
   match ":page_name"              => "pages#show"
+  match "city/:city"                     => "welcome#city"
 
   root to: "welcome#index"
 end
