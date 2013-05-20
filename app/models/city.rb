@@ -4,6 +4,7 @@ class City < ActiveRecord::Base
 
   has_many :single_event
   has_many :blog_post
+  has_many :suggestion
 
   validates_presence_of :name
 

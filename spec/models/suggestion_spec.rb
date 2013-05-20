@@ -6,13 +6,13 @@ describe Suggestion do
     suggestion.should_not be_valid
   end
 
-  it "should validates presence of occurrence" do
-    suggestion = FactoryGirl.build :suggestion, occurrence: nil
+  it "should validates presence of city" do
+    suggestion = FactoryGirl.build :suggestion, city: nil, name: "test"
     suggestion.should_not be_valid
   end
 
-  it "should validates presence of place" do
-    suggestion = FactoryGirl.build :suggestion, place: nil
+  it "should validates presence of occurrence" do
+    suggestion = FactoryGirl.build :suggestion, occurrence: nil
     suggestion.should_not be_valid
   end
 

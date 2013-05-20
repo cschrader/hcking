@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20130517121211) do
     t.integer  "picture_id"
     t.string   "mp3file"
     t.string   "blog_type",         :default => "blog"
+    t.integer  "city_id"
   end
 
   add_index "blog_posts", ["category_id"], :name => "index_blog_posts_on_category_id"
@@ -153,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20130517121211) do
     t.integer  "venue_id"
     t.string   "venue_info"
     t.integer  "picture_id"
+    t.integer  "city_id"
   end
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
@@ -187,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20130517121211) do
     t.integer  "picture_id"
     t.string   "twitter"
     t.boolean  "use_venue_info_of_event", :default => true
+    t.integer  "city_id"
   end
 
   add_index "single_events", ["category_id"], :name => "index_single_events_on_category_id"
@@ -210,6 +213,7 @@ ActiveRecord::Schema.define(:version => 20130517121211) do
     t.text     "more"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "city_id"
   end
 
   create_table "taggings", :force => true do |t|
