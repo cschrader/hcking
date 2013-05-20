@@ -7,6 +7,6 @@
         %input{type: "email", name: "EMAIL", placeholder: "E-Mail-Adresse", required: true}
         %select#params
           %option{ :value => ""} Wählen Sie eine Stadt ...
-          - City.all.each do |city|
+          - cities.each do |city|
             %option{:value => city.id} #{city.name}
         %input{type: "submit", value: "Absenden"}
