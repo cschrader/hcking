@@ -11,6 +11,9 @@ ActiveAdmin.register BlogPost do
     column :podcast do |post|
       post.blog_type == "podcast" ? "Ja" : "Nein"
     end
+    column :city do |city|
+      city.name
+    end
     default_actions
   end
 

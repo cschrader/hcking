@@ -2,6 +2,7 @@ class Box < ActiveRecord::Base
   attr_accessible :content_id, :content_type, :grid_position, :carousel_position
 
   belongs_to :content, polymorphic: true
+  belongs_to :city
 
   scope :in_grid, where("grid_position is not null").order("grid_position ASC")
   scope :first_grid_row, in_grid.where("grid_position <= 3")
