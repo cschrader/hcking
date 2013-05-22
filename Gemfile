@@ -101,6 +101,7 @@ gem 'momentjs-rails', '~> 1.7.2'
 group :development do
   # Deployment
   gem 'capistrano', '~> 2.13.0'
+  gem 'seed_dumper'
 
   group :darwin do
     gem 'rb-fsevent', '~> 0.9.0pre4'
