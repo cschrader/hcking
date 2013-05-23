@@ -5,6 +5,7 @@ ActiveAdmin.register Event do
     column :id
     column :name
     column :category
+    column :city
     column :url do |event|
       a "Link", href: event.url
     end
