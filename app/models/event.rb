@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
   belongs_to :category
   belongs_to :venue
   belongs_to :picture
+  belongs_to :city
 
   has_many :single_events, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
