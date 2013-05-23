@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Vollkorn)
 
 body
-  padding-top: 60px
+  padding-top: 0px
 
 .box
   min-height: 300px
@@ -109,10 +109,19 @@ a.hidden-link
     text-decoration: underline
     color: $text_color
 
-
+.cities_nav
+  background-color: #ccc
+  li
+    a
+      color: black
+      padding: 0 5px
+      font-weight: bold
+      text-decoration:  none
+    a.active
+      font-weight: normal
 // Form overrides
 input, textarea, .uneditable-input
   width: 309px
 
-select 
+select
   width: 320px

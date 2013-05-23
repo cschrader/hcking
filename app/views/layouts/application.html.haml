@@ -32,15 +32,16 @@
 
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     %header.container
+      -unless @cities.nil?
+        .city_navigation
+          .row
+            .navbar-inner
+              = render 'welcome/city_select'
       .navbar
         .navbar-inner
           = link_to image_tag('logo.png', width:"325px", height:"53px"), root_path, class: 'brand', title: 'NERDHUB'
           = render_navigation
           = render 'users/sessions/loginform_popup'
-      -unless @cities.nil?
-        .row
-          .span9
-            = render 'welcome/city_select'
 
     .container
       - if flash[:notice]
