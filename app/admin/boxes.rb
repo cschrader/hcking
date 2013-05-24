@@ -23,7 +23,7 @@ ActiveAdmin.register Box do
 
     cities = {}
     City.all.each do |city|
-      cities[city.name] = city
+      cities[city.name] = city.id
     end
 
     f.inputs do

@@ -1,13 +1,24 @@
 class Box < ActiveRecord::Base
-  attr_accessible :content_id, :content_type, :grid_position, :carousel_position
+  attr_accessible :content_id, :content_type, :grid_position, :carousel_position, :city_id
 
   belongs_to :content, polymorphic: true
   belongs_to :city
 
   scope :in_grid, where("grid_position is not null").order("grid_position ASC")
-  scope :first_grid_row, in_grid.where("grid_position <= 3")
-  scope :second_grid_row, in_grid.where("grid_position > 3")
-  scope :in_carousel, where("carousel_position is not null").order("carousel_position ASC")
+  scope :first_grid_row, in_grid.where("grid_position <= 3 & city_id IS NULL ")
+  scope :second_grid_row, in_grid.where("grid_position > 3 & city_id IS NULL")
+  scope :in_carousel, where("carousel_position is not null & city_id IS NULL").order("carousel_position ASC")
+
+  # Filter by cities
+  scope :first_grid_row_by_city,
+    lambda{|city| in_grid.where("grid_position <= 3 & city_id = ? ",city)}
+  scope :second_grid_row_by_city,
+    lambda{|city| in_grid.where("grid_position > 3 & city_id = ?",city)}
+  scope :in_carousel_by_city,
+    lambda{|city| where("carousel_position is not null AND city_id = ?",city).order("carousel_position ASC")}
+
+    scope :in_next_from,
+    lambda { |delta, start_date| where(occurrence: (start_date)..((start_date + delta).to_date)) }
 
   validates_uniqueness_of :grid_position, allow_nil: true
   validates_uniqueness_of :carousel_position, allow_nil: true
