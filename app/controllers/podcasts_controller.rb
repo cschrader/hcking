@@ -24,7 +24,7 @@ class PodcastsController < BlogPostsController
   end
 
   def sidebar_values
-    @categories = Category.unscoped.where("id in (select category_id from blog_posts where blog_type='podcast' and publishable = 1)").uniq.order(:title)
+    @categories = Category.unscoped.where("id in (select category_id from blog_posts where blog_type='podcast' and publishable)").uniq.order(:title)
     @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
   end
 end

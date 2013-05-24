@@ -51,7 +51,7 @@ class BlogPostsController < ApplicationController
   end
 
   def sidebar_values
-    @categories = Category.where("id in (select category_id from blog_posts where blog_type = 'blog' and publishable = 1)").uniq.order(:title)
+    @categories = Category.where("id in (select category_id from blog_posts where blog_type = 'blog' and publishable)").uniq.order(:title)
     @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
   end
 end
