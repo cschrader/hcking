@@ -1,7 +1,7 @@
 %ul{:class => 'inline cities_nav', :style => "float:right;"}
   - @cities.each do |city|
     %li
-      -  if city.name.downcase == @city
+      -  if city.name == @city.name
         = link_to city.name, '/city/'+city.name.downcase, :class => 'active'
       - else
         = link_to city.name, '/city/'+city.name.downcase

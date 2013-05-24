@@ -32,6 +32,8 @@ class SingleEvent < ActiveRecord::Base
     lambda { |delta, start_date| where(occurrence: (start_date)..((start_date + delta).to_date)) }
   scope :recent_to_soon,
     lambda { |delta| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date + 1.day)) }
+  scope :recent_to_soon_by_city,
+    lambda { |delta,city| where(occurrence: (Time.now.to_date - delta)..((Time.now + delta).to_date + 1.day), city_id: city) }
   scope :only_tagged_with,
     lambda { |tag| tagged_with(tag) | joins(:event).where('events.id in (?)', Event.tagged_with(tag).map(&:id)) }
   scope :in_categories,
