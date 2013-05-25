@@ -15,7 +15,7 @@ class BlogPost < ActiveRecord::Base
   validates_presence_of :headline, :headline_teaser, :teaser_text, :text, :user, :category, :publishable_from, :picture_id, :blog_type
 
   scope :for_web, lambda { where( "publishable = ? and publishable_from <= ?", true, Time.zone.now ).order("publishable_from desc") }
-  scope :most_recent, where("publishable = 1 and publishable_from <= ?", Time.zone.now).order("publishable_from DESC").limit(30)
+  scope :most_recent, where("publishable = ? and publishable_from <= ?", true, Time.zone.now).order("publishable_from DESC").limit(30)
   scope :blog, where("blog_type = 'blog'")
   scope :podcast, where("blog_type = 'podcast'")
 
@@ -51,3 +51,7 @@ class BlogPost < ActiveRecord::Base
     self.publishable_from = Time.now if self.publishable_from.blank?
   end
 end
+
+
+
+

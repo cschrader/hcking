@@ -6,6 +6,7 @@ class City < ActiveRecord::Base
   has_many :blog_post
   has_many :suggestion
   has_many :blox
+  has_many :venues
 
   validates_presence_of :name
 
