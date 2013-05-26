@@ -123,4 +123,5 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.2'
   gem 'faker', '~> 1.1.2'
   gem "debugger"
+  gem "yaml_db"
 end

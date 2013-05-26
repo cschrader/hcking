@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
     @first_row = Box.first_grid_row
     @second_row = Box.second_grid_row
     @carousel = Box.in_carousel
-    @cities = City.all
+
   end
 
  def city
@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
     @first_row = Box.first_grid_row_by_city(@city.id)
     @second_row = Box.second_grid_row_by_city(@city.id)
     @carousel = Box.in_carousel_by_city(@city.id)
-    @cities = City.all
+
     render :template => 'welcome/index'
  end
 

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  before_filter :set_current_user
+  before_filter :set_current_user, :get_cities
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: "Leider darfst du das nicht."
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def is_google_bot
     !request.env["HTTP_USER_AGENT"].match(/googlebot/i).nil?
+  end
+
+  def get_cities
+    @cities = City.all
   end
 
   private
