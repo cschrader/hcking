@@ -126,5 +126,6 @@ group :test, :development do
 end
 
 group :production do
+  #For Heroku deploy
   gem "pg"
 end
