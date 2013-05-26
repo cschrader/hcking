@@ -6,7 +6,6 @@ gem 'rake', '~> 10.0.3'
 # Databases
 gem 'sqlite3', '~> 1.3.7', group: :test
 gem 'mysql2', '~> 0.3.11'
-gem 'pg'
 
 # Memcache Store
 # DO NOT UPGRADE THIS
@@ -124,4 +123,8 @@ group :test, :development do
   gem 'faker', '~> 1.1.2'
   gem "debugger"
   gem "yaml_db"
+end
+
+group :production do
+  gem "pg"
 end
