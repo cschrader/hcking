@@ -6,12 +6,7 @@ gem 'rake', '~> 10.0.3'
 # Databases
 gem 'pg'
 gem 'mysql2', '~> 0.3.11'
-
-group :production do
-  #For Heroku deploy
-  gem "pg"
-
-end
+gem "pg"
 
 # Memcache Store
 # DO NOT UPGRADE THIS
