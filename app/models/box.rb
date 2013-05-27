@@ -5,8 +5,8 @@ class Box < ActiveRecord::Base
   belongs_to :city
 
   scope :in_grid, where("grid_position is not null").order("grid_position ASC")
-  scope :first_grid_row, in_grid.where("grid_position <= 3 & city_id IS NULL ")
-  scope :second_grid_row, in_grid.where("grid_position > 3 & city_id IS NULL")
+  scope :first_grid_row, in_grid.where("grid_position <= 3 AND city_id IS NULL ")
+  scope :second_grid_row, in_grid.where("grid_position > 3 AND city_id IS NULL")
   scope :in_carousel, where("carousel_position is not null AND city_id IS NULL").order("carousel_position ASC")
 
   # Filter by cities
