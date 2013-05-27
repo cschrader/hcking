@@ -11,9 +11,9 @@ class Box < ActiveRecord::Base
 
   # Filter by cities
   scope :first_grid_row_by_city,
-    lambda{|city| in_grid.where("grid_position <= 3 & city_id = ? ",city)}
+    lambda{|city| in_grid.where("grid_position <= 3 AND city_id = ? ",city)}
   scope :second_grid_row_by_city,
-    lambda{|city| in_grid.where("grid_position > 3 & city_id = ?",city)}
+    lambda{|city| in_grid.where("grid_position > 3 AND city_id = ?",city)}
   scope :in_carousel_by_city,
     lambda{|city| where("carousel_position is not null AND city_id = ?",city).order("carousel_position ASC")}
 
