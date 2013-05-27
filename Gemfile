@@ -4,9 +4,13 @@ gem 'rails', '~> 3.2.13'
 gem 'rake', '~> 10.0.3'
 
 # Databases
-gem 'sqlite3', '~> 1.3.7', group: :test
+gem 'pg'
 gem 'mysql2', '~> 0.3.11'
-gem "pg"
+
+group :production do
+  #For Heroku deploy
+  gem "pg"
+end
 
 # Memcache Store
 # DO NOT UPGRADE THIS
@@ -126,6 +130,4 @@ group :test, :development do
   gem "yaml_db"
 end
 
-group :production do
-  gem "pg"
-end
+
