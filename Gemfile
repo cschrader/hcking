@@ -10,6 +10,7 @@ gem 'mysql2', '~> 0.3.11'
 group :production do
   #For Heroku deploy
   gem "pg"
+
 end
 
 # Memcache Store
