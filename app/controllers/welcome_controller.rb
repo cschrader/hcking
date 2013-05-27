@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
   end
 
  def city
-    @city = City.find_by_name params[:city]
+    @city = City.find_by_name params[:city].camelize
     single_events = SingleEvent.recent_to_soon_by_city(4.weeks,@city.id)
     events_by_day = Calendar.events_by_day(single_events)
     @mini_calendar_events = Calendar.fill_gaps(events_by_day, Date.today - 4.weeks, Date.today + 4.weeks)
