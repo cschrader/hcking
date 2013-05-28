@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130526101941) do
+ActiveRecord::Schema.define(:version => 20130528181849) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20130526101941) do
     t.float    "latitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "default"
   end
 
   create_table "comments", :force => true do |t|
@@ -288,6 +289,7 @@ ActiveRecord::Schema.define(:version => 20130526101941) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "url"
+    t.integer  "city_id"
   end
 
   add_index "venues", ["latitude", "longitude"], :name => "index_venues_on_latitude_and_longitude"

@@ -5,9 +5,9 @@ class Box < ActiveRecord::Base
   belongs_to :city
 
   scope :in_grid, where("grid_position is not null").order("grid_position ASC")
-  scope :first_grid_row, in_grid.where("grid_position <= 3 AND city_id IS NULL ")
-  scope :second_grid_row, in_grid.where("grid_position > 3 AND city_id IS NULL")
-  scope :in_carousel, where("carousel_position is not null AND city_id IS NULL").order("carousel_position ASC")
+  scope :first_grid_row, in_grid.where("grid_position <= 3 AND city_id = ? ",City.default_city)
+  scope :second_grid_row, in_grid.where("grid_position > 3 AND city_id = ?",City.default_city)
+  scope :in_carousel, where("carousel_position is not null AND city_id = ?", City.default_city).order("carousel_position ASC")
 
   # Filter by cities
   scope :first_grid_row_by_city,
@@ -80,4 +80,6 @@ class Box < ActiveRecord::Base
       errors.add(:carousel_position, "Sorry, you can't put advertisement into the carousel")
     end
   end
+
+
 end

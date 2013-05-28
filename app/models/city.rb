@@ -9,4 +9,8 @@ class City < ActiveRecord::Base
 
   validates_presence_of :name
 
+
+  def self.default_city
+    (City.find_by_default true).id
+  end
 end
