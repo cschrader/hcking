@@ -20,6 +20,6 @@ class City < ActiveRecord::Base
   end
 
   def self.default_city
-   (City.find_by_default true)
+   (City.find_by_default true) | City.new
   end
 end
