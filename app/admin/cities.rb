@@ -2,6 +2,8 @@ ActiveAdmin.register City do
   menu parent: "Kalender"
   config.sort_order = "name_asc"
 
+  filter :name
+
   index do
     column :id
     column :name

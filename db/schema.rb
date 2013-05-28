@@ -281,7 +281,7 @@ ActiveRecord::Schema.define(:version => 20130526101941) do
     t.string   "location"
     t.string   "street"
     t.string   "zipcode"
-    t.string   "city_name"
+    t.string   "city"
     t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
