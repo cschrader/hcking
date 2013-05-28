@@ -60,6 +60,7 @@ gem 'omniauth-linkedin', '~> 0.1.0'
 # Picture Upload
 gem 'carrierwave', '~> 0.8.0'
 gem 'mini_magick', '~> 3.5.0'
+gem "fog", "~> 1.3.1"
 
 # MP3 Player
 gem 'mediaelement_rails', '~> 0.5.0'
