@@ -9,7 +9,7 @@ class City < ActiveRecord::Base
 
   validates_presence_of :name
 
-  after_save :default_city_update
+  before_save :default_city_update
 
   def default_city_update
     if self.default
@@ -17,6 +17,7 @@ class City < ActiveRecord::Base
        c.default = false
        c.save!
     end
+
   end
 
   def self.default_city
