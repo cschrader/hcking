@@ -9,7 +9,7 @@ class City < ActiveRecord::Base
 
   validates_presence_of :name
 
-  before_save :default_city_update
+  #before_save :default_city_update
 
   def default_city_update
     if self.default
