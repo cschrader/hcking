@@ -288,7 +288,6 @@ ActiveRecord::Schema.define(:version => 20130526101941) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "url"
-    t.integer  "city_id"
   end
 
   add_index "venues", ["latitude", "longitude"], :name => "index_venues_on_latitude_and_longitude"

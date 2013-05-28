@@ -20,8 +20,8 @@ class Box < ActiveRecord::Base
     scope :in_next_from,
     lambda { |delta, start_date| where(occurrence: (start_date)..((start_date + delta).to_date)) }
 
-  validates_uniqueness_of :grid_position, allow_nil: true
-  validates_uniqueness_of :carousel_position, allow_nil: true
+  validates_uniqueness_of :grid_position, allow_nil: true, :scope => :city_id
+  validates_uniqueness_of :carousel_position, allow_nil: true, :scope => :city_id
   validate :content_has_picture
   validates :grid_position, inclusion: {in: [1,2,3,4,5,6,nil]}
   validate :no_ad_in_the_carousel
