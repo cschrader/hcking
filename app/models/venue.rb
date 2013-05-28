@@ -5,7 +5,7 @@ class Venue < ActiveRecord::Base
 
   has_many :events
   has_many :single_events
-  #belongs_to :city
+
 
   after_validation :geocode
   before_save :desnormalize_city
