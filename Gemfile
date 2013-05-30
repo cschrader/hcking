@@ -4,7 +4,6 @@ gem 'rails', '~> 3.2.13'
 gem 'rake', '~> 10.0.3'
 
 # Databases
-gem 'pg'
 gem 'mysql2', '~> 0.3.11'
 gem 'activerecord-mysql-adapter'
 
