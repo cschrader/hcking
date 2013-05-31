@@ -5,9 +5,9 @@ class Box < ActiveRecord::Base
   belongs_to :city
 
   scope :in_grid, where("grid_position is not null").order("grid_position ASC")
-  scope :first_grid_row, in_grid.where("grid_position <= 3 AND city_id = ? ",0)
-  scope :second_grid_row, in_grid.where("grid_position > 3 AND city_id = ?",0)
-  scope :in_carousel, where("carousel_position is not null AND city_id = ?", 0).order("carousel_position ASC")
+  scope :first_grid_row, in_grid.where("grid_position <= 3 AND city_id = ? ",City.default_city.id)
+  scope :second_grid_row, in_grid.where("grid_position > 3 AND city_id = ?",City.default_city.id)
+  scope :in_carousel, where("carousel_position is not null AND city_id = ?", City.default_city.id).order("carousel_position ASC")
 
   # Filter by cities
   scope :first_grid_row_by_city,
