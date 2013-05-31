@@ -15,7 +15,6 @@ CarrierWave.configure do |config|
     :aws_access_key_id     => ENV['S3_KEY'],
     :aws_secret_access_key => ENV['S3_SECRET'],
     :region                => ENV['S3_REGION'],
-    :host                   => 'nerdhub.s3.amazonaws.com',
     :endpoint               => ENV['S3_ASSET_URL']
   }
 
@@ -31,5 +30,5 @@ CarrierWave.configure do |config|
   config.fog_public = true
   config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
 
-  config.fog_directory    = "uploads"
+  config.fog_directory    = "nerdhub"
 end
