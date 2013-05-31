@@ -98,6 +98,10 @@ gem 'simple-navigation', '~> 3.10.0'
 # Date parsing in Javascript
 gem 'momentjs-rails', '~> 1.7.2'
 
+group :assets do
+  gem 'turbo-sprockets-rails3'
+end
+
 group :development do
   # Deployment
   gem 'capistrano', '~> 2.13.0'
