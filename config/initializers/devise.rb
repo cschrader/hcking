@@ -215,12 +215,13 @@ Devise.setup do |config|
   # end
 
   # OmniAuth strategies
-  omniauth_yaml = File.expand_path("../../omniauth.yml", __FILE__)
-  if File.exist?(omniauth_yaml)
-    yaml = YAML.load_file omniauth_yaml
-    yaml["auth"].keys.each do |key|
-      config.omniauth key.to_sym, yaml["auth"][key]["key"], yaml["auth"][key]["secret"]
-    end
-  end
+#  omniauth_yaml = File.expand_path("../../omniauth.yml", __FILE__)
+#  if File.exist?(omniauth_yaml)
+#    yaml = YAML.load_file omniauth_yaml
+#    yaml["auth"].keys.each do |key|
+#      config.omniauth key.to_sym, yaml["auth"][key]["key"], yaml["auth"][key]["secret"]
+#    end
+#  end
+  config.omniauth facebook, ENV['FB_KEY'], ENV['FB_SECRET']
 
 end
