@@ -2,7 +2,7 @@
 class ChangeMailer < ActionMailer::Base
   default from: "bodo@hcking.de"
 
-  RECIPIENTS = ["bodo@wannawork.de", "lucas.dohmen@koeln.de"]
+  RECIPIENTS = ["info@nerdhub.de", "schrader@evendi.de"]
 
   def mail_changes(record, changes)
     @record = record
