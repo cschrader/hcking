@@ -222,6 +222,7 @@ Devise.setup do |config|
 #      config.omniauth key.to_sym, yaml["auth"][key]["key"], yaml["auth"][key]["secret"]
 #    end
 #  end
-  config.omniauth facebook, ENV['FB_KEY'], ENV['FB_SECRET']
+  config.omniauth "facebook", ENV['FB_KEY'], ENV['FB_SECRET']
+  config.omniauth "twitter", ENV['TW_KEY'], ENV['TW_SECRET']
 
 end
