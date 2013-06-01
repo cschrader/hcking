@@ -223,6 +223,8 @@ Devise.setup do |config|
 #    end
 #  end
   config.omniauth "facebook", ENV['FB_KEY'], ENV['FB_SECRET']
-  config.omniauth "twitter", ENV['TW_KEY'], ENV['TW_SECRET']
+  config.omniauth "twitter", ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
+  config.omniauth "github", ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
+  config.omniauth "google_oauth2", ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET']
 
 end
