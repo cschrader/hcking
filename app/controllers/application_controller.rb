@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_cities
-    @cities = City.all
+    @cities = City.all unless params["controller"].include?"admin"
   end
 
   private
