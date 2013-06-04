@@ -15,7 +15,10 @@ gem 'activerecord-mysql-adapter'
 #
 #  https://github.com/mperham/dalli/issues/229
 #
-gem 'dalli', '~> 1.1.5'
+#gem 'dalli', '~> 1.1.5'
+# for heroku we use
+gem 'memcachier'
+gem 'dalli'
 
 # Tags
 gem 'acts-as-taggable-on', '~> 2.3.3'
