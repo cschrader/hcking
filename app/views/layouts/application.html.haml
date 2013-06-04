@@ -59,7 +59,7 @@
 
       = yield
 
-      - if controller != CalendarsController and @city != nil
+      - if controller != CalendarsController and @city != nil and @city.name == 'Cologne'
         .this_is_cologne
           .row
             .span6
