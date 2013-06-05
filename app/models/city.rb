@@ -1,6 +1,6 @@
 class City < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :name, :description, :latitude, :longitude
+  attr_accessible :name, :description, :latitude, :longitude#, :default
 
   has_many :single_events
   has_many :blog_posts
@@ -8,17 +8,6 @@ class City < ActiveRecord::Base
   has_many :boxes
 
   validates_presence_of :name
-
-  before_save :default_city_update
-
-  def default_city_update
-    if self.default
-       c = City.default_city
-       c.default = false
-       c.save!
-    end
-
-  end
 
   def self.default_city
    City.find_by_default true

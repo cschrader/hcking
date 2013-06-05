@@ -33,9 +33,9 @@ SimpleNavigation::Configuration.run do |navigation|
   # Define the primary navigation
   navigation.items do |primary|
     primary.dom_class = "nav main-nav pull-right"
-    primary.item :calender, 'Kalender', calendar_path(@city), class: "nav-link"
-    primary.item :blog, 'Blog', blog_posts_path(@city)
-    primary.item :podcast, 'Podcast', podcasts_path(@city)
+    primary.item :calender, 'Kalender', calendar_path(@city.name), class: "nav-link"
+    primary.item :blog, 'Blog', blog_posts_path(@city.name)
+    primary.item :podcast, 'Podcast', podcasts_path(@city.name)
     primary.item :login, 'Login', user_session_path, :if => Proc.new { current_user.blank? }, class: "login-nav-link"
     primary.item :login, 'Logout', destroy_user_session_path, method: :delete, :if => Proc.new { !current_user.blank? }
 

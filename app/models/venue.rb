@@ -1,14 +1,12 @@
 # encoding: utf-8
 class Venue < ActiveRecord::Base
-  attr_accessible :url, :country, :latitude, :location, :longitude, :street, :zipcode, :city_name
-  validates_presence_of :location, :city_id, :country, :street, :zipcode
+  attr_accessible :url, :country, :latitude, :location, :longitude, :street, :zipcode, :city
+  validates_presence_of :location, :country, :street, :zipcode
 
   has_many :events
   has_many :single_events
 
-
   after_validation :geocode
-  before_save :desnormalize_city
 
   geocoded_by :address
 
@@ -31,10 +29,5 @@ class Venue < ActiveRecord::Base
       "og:street-address"=>street,
       "og:country-name"=>country
     }
-  end
-
-  def desnormalize_city
-    c = City.find self.city_id
-    self.city_name = c.name
   end
 end

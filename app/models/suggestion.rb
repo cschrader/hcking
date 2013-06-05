@@ -3,7 +3,6 @@ class Suggestion < ActiveRecord::Base
     :occurrence,
     :description,
     :more,
-    :city,
     :more_as_text
 
   serialize :more, Hash

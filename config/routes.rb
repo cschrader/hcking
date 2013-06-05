@@ -40,11 +40,13 @@ Hcking::Application.routes.draw do
   match "podcast/:year/:month/:day/:id" => "podcasts#show"
   match "podcast/feed/:category_id" => "podcasts#feed", as: "podcast_feed"
 
-  resources :podcasts, path: "podcast", only: [:show, :index] do
+  resources :podcasts, path: "podcast", only: [:show] do
     resources :comments, except: [:new]
   end
 
-  resources :blog_posts, path: "blog", only: [:show, :index] do
+  match 'podcasts/:city' => 'podcasts#index', as: "podcasts"
+
+  resources :blog_posts, path: "blog", only: [:show] do
     collection do
       get :feed, defaults: { format: 'atom' }
     end
@@ -60,7 +62,7 @@ Hcking::Application.routes.draw do
   resources :search, only: [:index]
   resources :comments, only: [:create, :edit, :show]
   resources :suggestions, only: [:new, :create, :show]
-  resource :calendar, only: [:show]
+  #resource :calendar, only: [:show]
 
   resources :events, only: [:index, :show] do
     resources :comments, except: [:new]
@@ -71,6 +73,8 @@ Hcking::Application.routes.draw do
     end
   end
 
+  match "calendar/:city"     => "calendars#show", :as => "calendar"
+  match "blog_post/:city"           => "blog_posts#index", :as => 'blog_posts'
   match "ical"                    => "ical#general"
   match "personalized_ical/:guid" => "ical#personalized"
   match "user_ical/:guid"         => "ical#like_welcome_page"
@@ -82,7 +86,7 @@ Hcking::Application.routes.draw do
   match "impressum"               => "pages#show", page_name: "impressum"
   match "newsletter"              => "pages#show", page_name: "newsletter"
   match ":page_name"              => "pages#show"
-  match "city/:city"                     => "welcome#city"
+  match "city/:city"                     => "welcome#city", :as => "welcome"
 
   root to: "welcome#index"
 end

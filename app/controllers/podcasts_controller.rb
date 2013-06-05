@@ -3,7 +3,8 @@ class PodcastsController < BlogPostsController
   before_filter :advertisement, :only => [:index, :show]
 
   def index
-    @posts = BlogPost.for_web.podcast.order("publishable_from desc").page(params[:page]).per(10)
+    @city = City.find_by_name params[:city]
+    @posts = BlogPost.for_web.podcast.order("publishable_from desc").page(params[:page]).per(10).where(:city_id => @city.id)
     find_post_by_params
   end
 

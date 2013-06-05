@@ -1,6 +1,6 @@
 class AddDefaultCityField < ActiveRecord::Migration
   def up
-    add_column :cities, :default, :boolean
+    add_column :cities, :default, :boolean, :default => false
   end
 
   def down
