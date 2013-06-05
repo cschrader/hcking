@@ -13,7 +13,7 @@ class Venue < ActiveRecord::Base
   default_scope order(:location)
 
   def address
-    [self.street, "#{self.zipcode} #{self.city_name}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")
+    [self.street, "#{self.zipcode} #{self.city}"].delete_if {|d| d.blank?}.collect{|d|d.strip}.join(", ")
   end
 
   def to_s
