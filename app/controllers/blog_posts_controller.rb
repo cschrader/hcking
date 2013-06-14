@@ -10,6 +10,7 @@ class BlogPostsController < ApplicationController
   end
 
   def show
+    @city = City.find_by_name params[:city]
     @post = BlogPost.find(params[:id])
   end
 
