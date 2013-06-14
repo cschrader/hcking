@@ -1,5 +1,5 @@
 module PostHelper
-  def post_path(controller, post,city="cologne")
+  def post_path(controller, post,city="köln")
     if controller.class == BlogPostsController
       blog_post_path(post,:city => city)
     elsif controller.class == PodcastsController
@@ -7,7 +7,7 @@ module PostHelper
     end
   end
 
-  def post_categorie_path(controller, post,city="cologne")
+  def post_categorie_path(controller, post,city="köln")
     if controller.class == BlogPostsController
       blog_categorie_path(post,:city => city)
     elsif controller.class == PodcastsController
