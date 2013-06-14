@@ -10,7 +10,7 @@
           .blog_category_indicator
             = render partial: 'modules/categories/indicator', locals: { submodule: 'small',
               color: current_category.nil? || current_category.id == category.id ? category.color : "#aaa" }
-          = link_to category.title, post_categorie_path(controller, category),
+          = link_to category.title, post_categorie_path(controller, category,@city.name),
             class: ((current_category.nil? || current_category.id == category.id) ? "" : "blog_category_inactive")
           - if controller.class == PodcastsController
             = link_to "RSS", podcast_feed_path(category_id: category.id), class: "blog_sidebar_podcast"

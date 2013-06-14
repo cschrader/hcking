@@ -14,7 +14,8 @@ class BlogPostsController < ApplicationController
   end
 
   def feed
-    @posts = BlogPost.for_web.blog.limit(10)
+    @city = City.find_by_name params[:city]
+    @posts = BlogPost.for_web.blog.limit(10).where(:city_id => @city.id)
     respond_to do |format|
       format.atom { render :layout => false }
     end
