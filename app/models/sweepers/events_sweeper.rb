@@ -1,5 +1,5 @@
 class Sweepers::EventSweeper < ActionController::Caching::Sweeper
-  observer Event
+  observe Event
 
   def after_save(event)
     expire_cache_for_events
