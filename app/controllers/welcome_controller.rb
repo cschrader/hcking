@@ -27,4 +27,6 @@ class WelcomeController < ApplicationController
     render :template => 'welcome/index'
  end
 
+
+
 end

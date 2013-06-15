@@ -1,4 +1,4 @@
-class Sweepers::EventSweeper < ActionController::Caching::Sweeper
+class Sweepers::EventsSweeper < ActionController::Caching::Sweeper
   observe Event
 
   def after_save(event)
