@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-  caches_action :city
 
   def index
     redirect_to :action => "city",:city => City.default_city.name
