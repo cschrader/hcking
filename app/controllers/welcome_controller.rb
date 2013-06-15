@@ -1,4 +1,8 @@
 class WelcomeController < ApplicationController
+  caches_action :city
+  cache_sweeper :single_events_sweeper
+  cache_sweeper :events_sweeper
+  
 
   def index
     redirect_to :action => "city",:city => City.default_city.name

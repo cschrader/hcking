@@ -15,9 +15,8 @@
     %a.carousel-control.right{href:'#head-carousel', data: {slide: "next"}}
 
 .row
-  - cache('all_events_calendar', city ) do
-    .span6
-      = render partial: 'modules/calendars/minical'
+  .span6
+    = render partial: 'modules/calendars/minical'
 
 .row.content-teasers
   = render partial: "boxes/grid_box", collection: @first_row
