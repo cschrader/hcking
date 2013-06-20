@@ -2,7 +2,10 @@ class SingleEvent < ActiveRecord::Base
   include TwitterHashTagFixer
 
   after_destroy :update_event
-
+  after_create   :expire_cache
+  after_update   :expire_cache
+  before_destroy :expire_cache
+  
   belongs_to :category
   belongs_to :venue
   belongs_to :event
@@ -99,6 +102,10 @@ class SingleEvent < ActiveRecord::Base
     end
   end
 
+  def expire_cache
+      ActionController::Base.new.expire_fragment('all_events_calendar')
+  end
+    
   def short_description
     return event.short_description if self.description.blank?
     ActionController::Base.helpers.strip_tags(self.description).truncate 80

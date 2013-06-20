@@ -28,6 +28,11 @@ class Box < ActiveRecord::Base
 
   delegate :category, to: :content
 
+  after_create   :expire_cache
+  after_update   :expire_cache
+  before_destroy :expire_cache
+  
+
   def is_ad?
     content_type == "Advertisement"
   end
@@ -79,6 +84,10 @@ class Box < ActiveRecord::Base
     if is_ad? and carousel_position.present?
       errors.add(:carousel_position, "Sorry, you can't put advertisement into the carousel")
     end
+  end
+
+  def expire_cache
+      ActionController::Base.new.expire_fragment('all_events_calendar')
   end
 
 
