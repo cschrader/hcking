@@ -7,6 +7,7 @@ class Sweepers::EventsSweeper < ActionController::Caching::Sweeper
 
   private
   def expire_cache_for_events
+    expire_page(:controller => 'welcome', :action => 'city')
     expire_fragment('all_events_calendar')
   end
 end
