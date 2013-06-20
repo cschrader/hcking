@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_current_user, :get_cities
+  cache_sweeper :single_events_sweeper
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: "Leider darfst du das nicht."
