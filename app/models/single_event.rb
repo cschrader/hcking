@@ -103,7 +103,7 @@ class SingleEvent < ActiveRecord::Base
   end
 
   def expire_cache
-      ActionController::Base.new.expire_fragment('all_events_calendar')
+      ActionController::Base.new.expire_fragment('all_events_calendar', self.city.name)
   end
     
   def short_description
