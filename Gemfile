@@ -20,6 +20,8 @@ gem 'activerecord-mysql-adapter'
 gem 'memcachier'
 gem 'dalli'
 
+gem 'unicorn'
+
 # Tags
 gem 'acts-as-taggable-on', '~> 2.3.3'
 
