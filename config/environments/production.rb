@@ -34,7 +34,7 @@ Hcking::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :dalli_store
+  config.cache_store = :dalli_store, { :expires_in => 1.hour }
   config.perform_caching = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
