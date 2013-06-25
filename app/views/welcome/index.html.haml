@@ -15,7 +15,7 @@
     %a.carousel-control.right{href:'#head-carousel', data: {slide: "next"}}
 
 .row
-  - cache ['all_events_calendar', @city.name, :expires_in => 1.hour ] do
+  - cache ['all_events_calendar', @city.name ] do
     .span6
       = render partial: 'modules/calendars/minical'
 
