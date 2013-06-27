@@ -1,7 +1,10 @@
 - current_date = nil
+- city = 1
 - single_events.each do |single_event|
   - if current_date != single_event.occurrence.to_date
     - current_date = single_event.occurrence.to_date
+    - city = single_event.city.id
+
     %h1
       = day_output_helper(current_date)
 
@@ -10,3 +13,4 @@
   var calendarScrollFrom = "#{current_date+1.day}";
   var calendarScrollTo   = "#{current_date+1.month}";
   var endOfTheWorld      = false;
+  var calendarCity       = "#{city}";

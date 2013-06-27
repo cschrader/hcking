@@ -81,9 +81,9 @@ jQuery ->
 # das Object verzeihts mir ... Aufrufen muss man eigentlich nur die ersten beiden Funktionen.
 Calendar =
   # Lade die Einträge und hänge sie an die Liste UNTEN dran
-  # calendarScrollFrom und calendarScrollTo werden von dem nachgeladenen Content gesetzt
+  # calendarScrollFrom, calendarScrollTo und calendarCity werden von dem nachgeladenen Content gesetzt
   appendEntries: ->
-    Calendar.getEntries calendarScrollFrom, calendarScrollTo, (data) ->
+    Calendar.getEntries calendarScrollFrom, calendarScrollTo, calendarCity, (data) ->
       $('.js-append-indicator').remove()
       $('.calendar-calendar').append(data)
       window.currentlyReloading = false
@@ -93,17 +93,18 @@ Calendar =
   #
   # Die Zeiten sind der Anfang des Kalenders (heute oder explizites Anfangsdatum) bis zum letzten sichtbaren Tag
   replaceEntries: ->
-    Calendar.getEntries beginningOfTime, calendarScrollFrom, (data) ->
+    Calendar.getEntries beginningOfTime, calendarScrollFrom, calendarCity, (data) ->
       $('.calendar-calendar').html(data)
 
   # Interne Funktion für den AJAX Call ;)
-  getEntries: (from, to, callback) ->
+  getEntries: (from, to, city, callback) ->
     $.ajax
       type: 'GET'
       url: '/api/calendar/'
       data:
         from: from
         to: to
+        city: city
         categories: CalendarPreset.getCategories().join()
       success: (data) ->
         callback(data)
