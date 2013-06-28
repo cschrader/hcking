@@ -3,7 +3,7 @@ FactoryGirl.define do
     calendar_week Time.now.iso_cweek
     description "This is the best box ever"
     duration 2
-    link "http://nerdhub.de"
+    link "http://de.nerdhub.de"
     context "homepage"
     association :picture, factory: :picture
   end
