@@ -4,7 +4,11 @@ class BlogPostsController < ApplicationController
   before_filter :advertisement, :only => [:index, :show, :feed]
 
   def index
-    @city = City.find_by_name params[:city]
+    if params[:city]
+      @city = City.find_by_name params[:city]
+    else
+      @city = City.find_by_default true
+    end
     @posts = BlogPost.for_web.blog.order("publishable_from desc").page(params[:page]).per(10).where(:city_id => @city.id)
     find_post_by_params
   end
