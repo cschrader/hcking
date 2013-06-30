@@ -21,7 +21,8 @@ class IcalController < ApplicationController
 
   def like_welcome_page
     @presets_json = CalendarPreset.presets_for_user(user)
-    @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy])
+
+    @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy])    
     @single_events.select! { |single_event| single_event.is_for_user? user }
     render_events @single_events
   end
@@ -68,7 +69,7 @@ class IcalController < ApplicationController
   end
 
   def time_range
-    (Date.today - 3.months)..(Date.today + 3.months)
+    (Date.today - 1.months)..(Date.today + 2.months)
   end
 
   def user
