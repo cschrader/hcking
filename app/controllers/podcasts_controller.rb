@@ -10,6 +10,14 @@ class PodcastsController < BlogPostsController
 
   def show
     @post = BlogPost.find(params[:id])
+    if @post.city
+      @city = @post.city
+    elsif params[:city]
+      @city = City.find_by_name params[:city]
+    else
+      @city = City.find_by_default true
+    end
+
   end
 
   def feed
