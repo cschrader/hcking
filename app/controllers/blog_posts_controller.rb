@@ -15,7 +15,14 @@ class BlogPostsController < ApplicationController
 
   def show
     @post = BlogPost.find(params[:id])
-    @city = @post.city
+    if @post.city
+      @city = @post.city
+    elsif params[:city]
+      @city = City.find_by_name params[:city]
+    else
+      @city = City.find_by_default true
+    end
+      
   end
 
   def feed
@@ -64,5 +71,11 @@ class BlogPostsController < ApplicationController
   def sidebar_values
     @categories = Category.where("id in (select category_id from blog_posts where blog_type = 'blog' and publishable)").uniq.order(:title)
     @single_events = SingleEvent.where("occurrence > ?", Time.now).limit(3)
+    if params[:city]
+      @city = City.find_by_name params[:city]
+    else
+      @city = City.find_by_default true
+    end
+    
   end
 end
