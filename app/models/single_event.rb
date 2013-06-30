@@ -204,11 +204,31 @@ class SingleEvent < ActiveRecord::Base
     return true unless user
     # Let us be a little more verbose than the old code
     # !((self.event.tag_list & user.hate_list).length > 0 && self.users.exclude?(user))
-    hated_tags_event = (self.event.tag_list & user.hate_list)
-    hated_tags_self  = (self.tag_list & user.hate_list)
+    
+    event_tag_list = Rails.cache.fetch("event/tag_list/#{self.event.cache_key}", :expires_in => 6.hours) do
+      Rails.logger.info "+++ event_tag_list Cache missed +++ event/tag_list/#{self.event.cache_key}"
+      self.event.tag_list
+    end
 
-    loved_tags_event = (self.event.tag_list & user.like_list)
-    loved_tags_self  = (self.tag_list & user.like_list)
+    single_event_tag_list = Rails.cache.fetch("single_event/tag_list/#{cache_key}", :expires_in => 6.hours) do
+      Rails.logger.info "+++ single_event_tag_list Cache missed +++ single_event/tag_list/#{cache_key}"
+      self.tag_list
+    end
+
+    user_hate_list = Rails.cache.fetch("user/hate_list/#{user.cache_key}", :expires_in => 5.minutes) do
+      Rails.logger.info "+++ user_hate_list Cache missed +++ user/hate_list/#{user.cache_key}"
+      user.hate_list
+    end
+    user_like_list = Rails.cache.fetch("user/like_list/#{user.cache_key}", :expires_in => 5.minutes) do
+      Rails.logger.info "+++ user_like_list Cache missed +++ user/like_list/#{user.cache_key}"
+      user.like_list
+    end
+    
+    hated_tags_event = (event_tag_list & user_hate_list)
+    hated_tags_self  = (single_event_tag_list & user_hate_list)
+
+    loved_tags_event = (event_tag_list & user_like_list)
+    loved_tags_self  = (single_event_tag_list & user_like_list)
 
     # Wenn der Event oder der Single Event einen Tag haben, den der Benutzer hasst...
     if hated_tags_event.size + hated_tags_self.size > 0
