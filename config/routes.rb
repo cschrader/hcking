@@ -59,6 +59,8 @@ Hcking::Application.routes.draw do
   match "blog/:year/:month/:day" => "blog_posts#index", year: /\d{4}/, month: /\d{1,2}/,  day: /\d{1,2}/
   match "blog/:year/:month/:day/:id" => "blog_posts#show"
 
+  resources :signed_urls, only: :index
+
   resources :search, only: [:index]
   resources :comments, only: [:create, :edit, :show]
   resources :suggestions, only: [:new, :create, :show]

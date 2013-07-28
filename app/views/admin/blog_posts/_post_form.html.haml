@@ -10,13 +10,28 @@
     = f.input :picture
     = f.input :blog_type, as: :select, :collection => {"Blog" => "blog", "Podcast" => "podcast"}
     = f.input :mp3file
-    - if @blog_post.mp3file?
-      %audio{src: @blog_post.mp3file.url, preload: "none"}
-        %script
-          $('audio').mediaelementplayer();
   = f.inputs "Teaser" do
     = f.input :headline_teaser, input_html: {rows: 1}
     = f.input :teaser_text, input_html: {rows: 3}
   = f.inputs "Inhalt" do
     = f.input :text
   = f.button
+
+%form(action="https://nerdhub.s3.amazonaws.com" method="post" enctype="multipart/form-data" class='direct-upload')
+  %input{type: :hidden, name: :key}
+  %input{type: :hidden, name: "AWSAccessKeyId", value: ENV['S3_KEY'] }
+  %input{type: :hidden, name: :acl, value: 'public-read'}
+  %input{type: :hidden, name: :policy}
+  %input{type: :hidden, name: :signature}
+  %input{type: :hidden, name: :success_action_status, value: "201"}
+
+  %input{type: :file, name: :file }
+  
+  - # You can recognize some bootstrap markup here :)
+  .progress.progress-striped.active
+    .bar 
+
+:css
+  .progress .bar{ height: 20px; background-color: grey }      
+
+= javascript_include_tag "s3_upload"

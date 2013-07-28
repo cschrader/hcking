@@ -28,7 +28,7 @@ xml.rss :version => "2.0",
         xml.link podcast_url(article)
         xml.guid podcast_url(article)
         xml.itunes :summary, article.teaser_text
-        xml.enclosure url: "#{request.protocol}#{request.host}#{article.mp3file.url}", length: article.mp3file.size, type:"audio/mpg"
+        xml.enclosure url: "#{request.protocol}#{request.host}#{article.get_podcast_url}", length: article.mp3file.size, type:"audio/mpg"
       end
     end
   end

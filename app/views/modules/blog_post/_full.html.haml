@@ -16,12 +16,12 @@
 
     - if blog_post.mp3file?
       .podcast_player
-        %audio{src: blog_post.mp3file.url, preload: "none"}
+        %audio{src: blog_post.get_podcast_url, preload: "none"}
           %script
             $('audio').mediaelementplayer({audioWidth: 418});
         %p
           %i{class: "icon-download"}
-          = link_to "Mp3 Datei", blog_post.mp3file.url
+          = link_to "Mp3 Datei", blog_post.get_podcast_url
     %p
       = raw blog_post.teaser_text
     = raw blog_post.text
