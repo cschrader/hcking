@@ -17,6 +17,12 @@
     = f.input :text
   = f.button
 
+.p
+.p Podcast Upload
+- # You can recognize some bootstrap markup here :)
+.progress.progress-striped.active
+  .bar 
+
 %form(action="https://nerdhub.s3.amazonaws.com" method="post" enctype="multipart/form-data" class='direct-upload')
   %input{type: :hidden, name: :key}
   %input{type: :hidden, name: "AWSAccessKeyId", value: ENV['S3_KEY'] }
@@ -27,9 +33,6 @@
 
   %input{type: :file, name: :file }
   
-  - # You can recognize some bootstrap markup here :)
-  .progress.progress-striped.active
-    .bar 
 
 :css
   .progress .bar{ height: 20px; background-color: grey }      
