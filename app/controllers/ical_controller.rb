@@ -22,7 +22,14 @@ class IcalController < ApplicationController
   def like_welcome_page
     @presets_json = CalendarPreset.presets_for_user(user)
 
-    @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy])    
+    if params[:city]
+      @city = City.find_by_name params[:city]
+      @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy]).where(:city_id => @city.id)
+    else
+      @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy])
+    end
+
+
     @single_events.select! { |single_event| single_event.is_for_user? user }
     render_events @single_events
   end
