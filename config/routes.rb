@@ -78,6 +78,9 @@ Hcking::Application.routes.draw do
   match "calendar/", :to => redirect("/calendar/K%C3%B6ln")
   match "calendar/:city"     => "calendars#show", :as => "calendar"
   match "blog_post/:city"           => "blog_posts#index", :as => 'blog_posts'
+  match "ical/:city"                    => "ical#general"
+  match "personalized_ical/:guid/:city" => "ical#personalized"
+  match "user_ical/:guid/:city"         => "ical#like_welcome_page"
   match "ical"                    => "ical#general"
   match "personalized_ical/:guid" => "ical#personalized"
   match "user_ical/:guid"         => "ical#like_welcome_page"

@@ -12,19 +12,32 @@ class IcalController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_empty
 
   def general
-    render_events SingleEvent.where(occurrence: time_range)
+    if params[:city]
+      @single_events = SingleEvent.where(occurrence: time_range).where(:city_id => params[:city])
+    else
+      @single_events = SingleEvent.where(occurrence: time_range)
+    end
+
+    render_events @single_events
+  #render_events SingleEvent.where(occurrence: time_range)
   end
 
   def personalized
-    render_events user.single_events.where(occurrence: time_range)
+    if params[:city]
+      @single_events = user.single_events.where(occurrence: time_range).where(:city_id => params[:city])
+    else
+      @single_events = user.single_events.where(occurrence: time_range)
+    end
+    
+    render_events @single_events
+#    render_events user.single_events.where(occurrence: time_range)
   end
 
   def like_welcome_page
     @presets_json = CalendarPreset.presets_for_user(user)
 
     if params[:city]
-      @city = City.find_by_name params[:city]
-      @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy]).where(:city_id => @city.id)
+      @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy]).where(:city_id => params[:city])
     else
       @single_events = SingleEvent.where(occurrence: time_range).in_categories(@presets_json[:diy])
     end

@@ -41,6 +41,8 @@ class CalendarsController < ApplicationController
       return
     end
 
+    @city = City.find_by_name params[:city]
+
     @single_events = SingleEvent.where('? <= occurrence AND occurrence <= ?', from, to)
     @single_events = @single_events.in_categories(params[:categories].split(',').map(&:to_i)) if params[:categories]
     @single_events.select! { |single_event| single_event.is_for_user? current_user } if current_user
