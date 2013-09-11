@@ -20,6 +20,11 @@ xml.rss :version => "2.0",
     xml.itunes :category, text: "Gadgets"
     xml.itunes :category, text: "Tech News"
     xml.itunes :category, text: "Podcasting"
+    if @category.id == 16
+      xml.itunes :"new-feed-url", "http://magazin.nerdhub.de/feed/nerdhub_netzcast/"
+    elsif @category.id == 12
+      xml.itunes :"new-feed-url", "http://www.droid-boy.de/?feed=podcast"
+    end
     @posts.each do |article|
       xml.item do
         xml.title article.headline
